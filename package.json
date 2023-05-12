@@ -1,0 +1,30 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "A simple URL shortening made with NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajpharrelo/URL-Shortener.git"
+  },
+  "keywords": [
+    "URL-Shortener",
+    "URL",
+    "Short",
+    "URLs"
+  ],
+  "author": "Ajae Obaze",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajpharrelo/URL-Shortener/issues"
+  },
+  "homepage": "https://github.com/ajpharrelo/URL-Shortener#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.5",
+    "express": "^4.18.2"
+  }
+}
