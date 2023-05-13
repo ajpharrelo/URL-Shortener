@@ -20,19 +20,12 @@ function generateID() {
 function checkIDExists(id)
 {
     let found = linkData.find(x => x.id === id);
-
-    if(found)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return found == undefined ? true : false;
 }
 
 function addLink(url, callback)
 {
+    // Check if URL is already shortened
     let foundUrl = linkData.find(x => x.url === url);
 
     if(!foundUrl)
@@ -44,6 +37,7 @@ function addLink(url, callback)
         fs.writeFile(saveFolder + 'links.json', JSON.stringify(linkData, null, 4), { encoding: 'utf-8', flag: 'w',}, (err) => {
             if(err)console.log(err);
         });
+
         return callback({existing: false, newId: newId});
     }
     else
@@ -57,11 +51,12 @@ function getLink(id)
     return linkData.find(x => x.id === id);
 }
 
+// To be called when a shortened URL is accessed
 function linkUsed(id)
 {
     let link = linkData.find(x => x.id === id);
-
     link.useCount += 1;
+
     fs.writeFile(saveFolder + 'links.json', JSON.stringify(linkData, null, 4), { encoding: 'utf-8', flag: 'w',}, (err) => {
         if(err)console.log(err);
     });

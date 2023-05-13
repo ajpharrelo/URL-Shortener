@@ -46,7 +46,7 @@ app.post('/', (req, res) => {
 })
 
 app.get('/link', (req, res) => {
-
+    // Display newly created or existing links short URL
     if(req.query.id && linkController.checkIDExists(req.query.id) == true)
     {
         return res.render('link', {id: req.query.id, host: hostname});
@@ -57,6 +57,7 @@ app.get('/link', (req, res) => {
     }
 })
 
+// Handle short URLS | su = "Short URL"
 app.get('/su', (req, res) => {
     if(req.query.id && linkController.checkIDExists(req.query.id) == true){
         let link = linkController.getLink(req.query.id);
@@ -64,6 +65,5 @@ app.get('/su', (req, res) => {
         return res.redirect(link.url);
     }
 })
-
 
  app.listen(8080);
