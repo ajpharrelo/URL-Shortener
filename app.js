@@ -3,6 +3,8 @@ const handlebars = require('express-handlebars');
 const linkController = require('./controller/link');
 const app = express();
 
+const hostname = "https://ajae.uk";
+
 // Handlebars engine setup
 app.engine('hbs', handlebars.engine({
     layoutsDir: 'layout',
@@ -44,7 +46,22 @@ app.post('/', (req, res) => {
 })
 
 app.get('/link', (req, res) => {
-    return res.render('link');
+
+    if(req.query.id && linkController.checkIDExists(req.query.id) == true)
+    {
+        return res.render('link', {id: req.query.id, host: hostname});
+    }
+    else
+    {
+        return res.redirect('/');
+    }
+})
+
+app.get('/su', (req, res) => {
+    if(req.query.id && linkController.checkIDExists(req.query.id) == true){
+        let link = linkController.getLink(req.query.id);
+        return res.redirect(link.url);
+    }
 })
 
 

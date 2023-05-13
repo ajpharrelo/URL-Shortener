@@ -17,6 +17,20 @@ function generateID() {
     return newId;
 }
 
+function checkIDExists(id)
+{
+    let found = linkData.find(x => x.id === id);
+
+    if(found)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 function addLink(url, callback)
 {
     let foundUrl = linkData.find(x => x.url === url);
@@ -38,7 +52,14 @@ function addLink(url, callback)
     }
 }
 
+function getLink(id)
+{
+    return linkData.find(x => x.id === id);
+}
+
 module.exports = {
     addLink,
-    generateID
+    generateID,
+    checkIDExists,
+    getLink
 }
