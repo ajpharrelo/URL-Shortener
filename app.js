@@ -3,7 +3,7 @@ const handlebars = require('express-handlebars');
 const linkController = require('./controller/link');
 const app = express();
 
-const hostname = "https://localhost:8080";
+const hostname = "http://localhost:8080";
 
 // Handlebars engine setup
 app.engine('hbs', handlebars.engine({
