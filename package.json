@@ -1,7 +1,7 @@
 {
   "name": "url-shortener",
   "version": "1.0.0",
-  "description": "A simple URL shortening made with NodeJS",
+  "description": "A simple URL shortening tool made with NodeJS",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,6 +25,7 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7"
   }
 }
