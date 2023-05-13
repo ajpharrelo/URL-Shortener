@@ -20,7 +20,7 @@ function generateID() {
 function checkIDExists(id)
 {
     let found = linkData.find(x => x.id === id);
-    return found == undefined ? true : false;
+    return found == undefined ? false : true;
 }
 
 function addLink(url, callback)
