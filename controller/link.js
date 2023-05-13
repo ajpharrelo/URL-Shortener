@@ -39,7 +39,7 @@ function addLink(url, callback)
     {
         let newId = generateID();
 
-        linkData.push({url: url, id: newId});
+        linkData.push({url: url, id: newId, useCount: 0});
 
         fs.writeFile(saveFolder + 'links.json', JSON.stringify(linkData, null, 4), { encoding: 'utf-8', flag: 'w',}, (err) => {
             if(err)console.log(err);
@@ -57,9 +57,20 @@ function getLink(id)
     return linkData.find(x => x.id === id);
 }
 
+function linkUsed(id)
+{
+    let link = linkData.find(x => x.id === id);
+
+    link.useCount += 1;
+    fs.writeFile(saveFolder + 'links.json', JSON.stringify(linkData, null, 4), { encoding: 'utf-8', flag: 'w',}, (err) => {
+        if(err)console.log(err);
+    });
+}
+
 module.exports = {
     addLink,
     generateID,
     checkIDExists,
-    getLink
+    getLink,
+    linkUsed
 }

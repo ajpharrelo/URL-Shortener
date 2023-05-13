@@ -60,6 +60,7 @@ app.get('/link', (req, res) => {
 app.get('/su', (req, res) => {
     if(req.query.id && linkController.checkIDExists(req.query.id) == true){
         let link = linkController.getLink(req.query.id);
+        linkController.linkUsed(link.id)
         return res.redirect(link.url);
     }
 })
