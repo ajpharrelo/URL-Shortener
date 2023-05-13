@@ -3,9 +3,9 @@
         <h1 class="m-2"> URL Shortener </h1>
         <p class="m-2">Enter a URL to receive a short version of it</p>
 
-        <form>
+        <form method="post" action="/">
             <div class="m-2 w-100">
-                <input class="form-control" type="url" placeholder="http://example.com" required="">
+                <input name="url" id="url" class="form-control" type="url" placeholder="http://example.com" required="">
             </div> 
             <button class="btn btn-primary w-100 m-2">Shorten URL</button>
         </form>    

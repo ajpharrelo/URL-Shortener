@@ -1,5 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const linkController = require('./controller/link');
 const app = express();
 
 // Handlebars engine setup
@@ -17,6 +18,29 @@ app.use(express.static('node_modules/bootstrap-icons/font/'));
 // Handle requests
 app.get('/', (req, res) => {
     return res.render('index');
+})
+
+// Handle form posting
+app.use(express.urlencoded({extended: true}));
+app.post('/', (req, res) => {
+    
+    if(req.body.url)
+    {
+        linkController.addLink(req.body.url, (result) => {
+            if(result.existing == true)
+            {
+                return res.redirect('/link?id=' + result.existingId);
+            }
+            else
+            {
+                return res.redirect('/link?id=' + result.newId);
+            }
+        });
+    }
+    else
+    {
+        return res.redirect('/');
+    }
 })
 
 app.get('/link', (req, res) => {
