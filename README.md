@@ -6,7 +6,7 @@ This simple URL shortener functions by taking an ordinary long url,
 and then saving it locally with an id attached, so that when a user requests the id they will be redirected to the original url.
 
 ## Saved data
-The processed links are saved locally within the application root folder inside the **/data/** folder, they are stored with the following information.
+The processed links are saved locally within the data folder as a json file **/data/links.json**, they are stored with the following information.
 
 - url, The original url.
 - id, the unique id.
@@ -22,6 +22,8 @@ The processed links are saved locally within the application root folder inside 
 The link system also ensures that the same url cannot be saved twice, instead the user will be given the existing id for the url.
 
 ## Usage
+Run ```npm i``` to install the required packages.
+
 In ```app.js``` set ```hostname``` to the hostname of the server that will be implementing/running
 the NodeJS application, then you should be all set.
 
